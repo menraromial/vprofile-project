@@ -2,7 +2,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   name                = "vprofile-bean-prod"
   application         = aws_elastic_beanstalk_application.vprofile-prod.name
   solution_stack_name = "64bit Amazon Linux 2023 v5.7.4 running Tomcat 10 Corretto 21"
-  cname_prefix        = "vprofile-bean-prod-pulsar"
+  cname_prefix        = "vprofile-bean-prod-pulsar-mwr"
 
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
@@ -39,7 +39,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
-    value     = "t3.micro"
+    value     = "t3.small"
   }
 
   setting {
@@ -61,7 +61,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "MaxSize"
-    value     = "8"
+    value     = "1"
   }
 
   setting {

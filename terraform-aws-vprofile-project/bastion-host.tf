@@ -15,8 +15,8 @@ data "aws_ami" "Ubuntu22ami" {
 }
 
 resource "aws_instance" "vprofile-bastion" {
-  ami                    = data.aws_ami.Ubuntu22ami.id
-  instance_type          = "t3.micro"
+  ami                    = "ami-0360c520857e3138f"
+  instance_type          = "t3.small"
   key_name               = aws_key_pair.vprofilekey.key_name
   subnet_id              = module.vpc.public_subnets[0]
   count                  = var.instance_count
